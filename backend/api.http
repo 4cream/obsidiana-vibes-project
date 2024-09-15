@@ -1,0 +1,2 @@
+### Get all the products
+GET https://http://localhost:3000/products
