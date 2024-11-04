@@ -8,6 +8,7 @@ const connectDB = async () => {
     // Crear una conexión a la base de datos
     const connection = await mysql.createConnection({
       host: config.db.host,
+      port: config.db.port,
       user: config.db.user,
       password: config.db.password,
       database: config.db.database,
@@ -15,6 +16,7 @@ const connectDB = async () => {
 
     console.log('Conectado a la base de datos MySQL');
     return connection; // Devuelve la conexión para su uso posterior
+    
   } catch (error) {
     console.error('Error conectando a la base de datos MySQL:', error);
     process.exit(1); // Salir del proceso en caso de error

@@ -1,7 +1,7 @@
 // src/components/user/userRoutes.js
 import { Router } from 'express';
 import {ProductController} from "./productController.js";
-const productRoutes = Router();
+// const productRoutes = Router();
 
 // import { getProducts, createProduct, updateProduct, deleteProduct } from './productController.js';
 
@@ -12,30 +12,32 @@ const productRoutes = Router();
 // productRoutes.delete('/:id', deleteProduct); // DELETE /api/users/:id
 
 
-const createProductRoutes = async ({productModel}) => {
-    const router = Router();
+const createProductRoutes = ({productModel}) => {
+    // const productRoutes = Router();
+    // console.log("Que es productRoutes?", productRoutes);
+    // const router = Router();
 
-    try {
-        const productController = await this.ProductController.getProductsController({productModel});
-        console.log("Que trae productController? ", productController);
-        productRoutes.get('/', productController);
-    } catch(err) {
-        console.log("Sale error desde productRoutes.js", err);
-        
-    }
-/* inventing */
-        // router.use((req, res, next) => {
-        //     req.productModel = productModel;
-        //     next();
-        // });
-/* ---------- */
+    // try {
+    //     const productController = await ProductController.getProductsController({ productModel });
+    //     if (typeof productController === 'function') {
+    //         productRoutes.get('/', productController);
+    //         productRoutes.get('/', (req, res) => ProductController.getProductsController(req, res, productModel));
 
-    // router.use((req, res, next) => {
-    //     req.productModel = productModel;
-    //     next();
-    //   });
+    //     } else {
+    //         console.error("getProductsController no devolvió una función.");
+    //     }
+    // } catch(err) {
+    //     console.log("Error en productRoutes.js:", err);
+    // }
 
-    return router;
+    // return productRoutes;
+
+    const productRoutes = Router();
+    const productController = new ProductController({ productModel }); // Instancia del controlador
+
+    // Utiliza el método de instancia del controlador
+    productRoutes.get('/', productController.getProductsController);
+    return productRoutes;
 }
 
 export {createProductRoutes};

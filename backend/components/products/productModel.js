@@ -8,8 +8,12 @@ import { connectDB } from '../../loaders/mysql2.js'; // Importa la conexión a M
 export class ProductModel {
 
     // Función para obtener todos los productos
-    static getAllProducts = async () => {
-        const [rows] = await connectDB.query('SELECT * FROM products');
+    static async getAllProducts () {
+        console.log("Llega hasta el modelo, primer metodo");
+        
+        const [rows] = await connectDB.query('SELECT id, name, price FROM products');
+        // console.log("Trae las rows de la base de datos?", rows);
+        
         return rows;
     };
 }

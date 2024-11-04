@@ -1,8 +1,6 @@
 import 'dotenv/config';
 import {initExpressApp} from './loaders/express.js';
-
 import {ProductModel} from './components/products/productModel.js';
-
 import { connectDB } from './loaders/mysql2.js';
 
 

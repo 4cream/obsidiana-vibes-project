@@ -3,11 +3,19 @@
 
 // src/components/product/product.service.js
 // import * as productModel from './productModel.js';
+import { ProductModel } from './productModel.js';
 
+export class ProductService {
+  // constructor({ productModel }) {
+  //   this.productModel = productModel;
+  // }
 
-export const getAllProducts = async ({productModel}) => {
-  return await productModel.getAllProducts();
-};
+  static async getAllProducts () {
+    console.log("Llega al servicio?");
+    const allProducts = await ProductModel.getAllProducts();
+    return allProducts;
+  }
+}
 
 
 
